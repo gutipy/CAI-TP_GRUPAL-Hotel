@@ -4,17 +4,16 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{718EC92E-D239-4FF5-9695-D569D4D429E9}</ProjectGuid>
-    <OutputType>Exe</OutputType>
-    <RootNamespace>ProyectoHotel.Negocio</RootNamespace>
-    <AssemblyName>ProyectoHotel.Negocio</AssemblyName>
+    <ProjectGuid>{0015284C-E268-4DD2-A3D8-29ECE7FE6893}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ProyectoHotel.Datos</RootNamespace>
+    <AssemblyName>ProyectoHotel.Datos</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -24,7 +23,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -43,17 +41,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Validaciones.cs" />
+    <Compile Include="Class1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\ProyectoHotel.Datos\ProyectoHotel.Datos.csproj">
-      <Project>{0015284c-e268-4dd2-a3d8-29ece7fe6893}</Project>
-      <Name>ProyectoHotel.Datos</Name>
-    </ProjectReference>
     <ProjectReference Include="..\ProyectoHotel.Entidades\ProyectoHotel.Entidades.csproj">
       <Project>{0839d671-8814-4427-982c-f9c5a524d479}</Project>
       <Name>ProyectoHotel.Entidades</Name>
