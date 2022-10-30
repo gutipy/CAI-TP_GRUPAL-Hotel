@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{18EC7439-6E6A-40D3-A2D5-FE00BAE2AC0A}</ProjectGuid>
+    <ProjectGuid>{718EC92E-D239-4FF5-9695-D569D4D429E9}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>ProyectoHotel.PresentacionConsola</RootNamespace>
-    <AssemblyName>ProyectoHotel.PresentacionConsola</AssemblyName>
+    <RootNamespace>ProyectoHotel.Negocio</RootNamespace>
+    <AssemblyName>ProyectoHotel.Negocio</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -43,7 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Program.cs" />
+    <Compile Include="Validaciones.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -53,10 +53,6 @@
     <ProjectReference Include="..\ProyectoHotel.Entidades\ProyectoHotel.Entidades.csproj">
       <Project>{0839d671-8814-4427-982c-f9c5a524d479}</Project>
       <Name>ProyectoHotel.Entidades</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\ProyectoHotel.Negocio\ProyectoHotel.Negocio.csproj">
-      <Project>{718ec92e-d239-4ff5-9695-d569d4d429e9}</Project>
-      <Name>ProyectoHotel.Negocio</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

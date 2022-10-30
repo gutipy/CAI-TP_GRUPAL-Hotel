@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ProyectoHotel.Entidades
 {
-    public class Class1
+    internal class Reserva
     {
     }
 }
