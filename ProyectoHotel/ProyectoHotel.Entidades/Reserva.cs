@@ -25,6 +25,34 @@ namespace ProyectoHotel.Entidades
         private DateTime _fechaIngreso;
         private DateTime _fechaEgreso;
 
+        public int Id
+        {
+            get { return _id; }
+        }
 
+        public int IdCliente
+        {
+            get { return _idCliente; }
+        }
+
+        public int IdHabitacion
+        {
+            get { return _idHabitacion; }
+        }
+
+        public int CantidadHuespedes
+        {
+            get { return _cantidadHuespedes; }
+        }
+
+        public DateTime FechaIngreso
+        {
+            get { return _fechaIngreso; }
+        }
+
+        public DateTime FechaEgreso
+        {
+            get { return _fechaEgreso; }
+        }
     }
 }
