@@ -26,5 +26,19 @@ namespace ProyectoHotel.PresentacionConsola
                 )
                 ;
         }
+
+        internal static void OpcionesCategoriaHabitacion()
+        {
+            Console.WriteLine(
+                Environment.NewLine +
+                "1 - Single" + Environment.NewLine +
+                "2 - Double" + Environment.NewLine +
+                "3 - Quadruple" + Environment.NewLine +
+                "4 - Junior Suite" + Environment.NewLine +
+                "5 - Suite" + Environment.NewLine +
+                "6 - Grand Suite" + Environment.NewLine
+                )
+                ;
+        }
     }
 }

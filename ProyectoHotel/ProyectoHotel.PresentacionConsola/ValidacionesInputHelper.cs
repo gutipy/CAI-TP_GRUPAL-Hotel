@@ -56,6 +56,35 @@ namespace ProyectoHotel.PresentacionConsola
             return flag;
         }
 
+        internal static bool FuncionValidacionOpcionCategoriaHabitacion(ref string opcion)
+        {
+            //Declaración de variables
+            bool flag = false;
+
+            do
+            {
+                opcion = Console.ReadLine();
+
+                if (string.IsNullOrEmpty(opcion))
+                {
+                    Console.WriteLine("ERROR! La opción ingresada no puede ser vacío, intente nuevamente.");
+                }
+
+                else if (opcion == "1" || opcion == "2" || opcion == "3" || opcion == "4" || opcion == "5" || opcion == "6")
+                {
+                    flag = true;
+                }
+
+                else
+                {
+                    Console.WriteLine("ERROR! La opción " + opcion + " no es una opción válida, intente nuevamente.");
+                }
+            } while (flag == false);
+
+            return flag;
+        }
+
+
         internal static bool FuncionValidacionDni(string dni, ref int dniValidado, string campo)
         {
             //Declaración de variables
@@ -69,6 +98,12 @@ namespace ProyectoHotel.PresentacionConsola
             {
                 Console.WriteLine("ERROR! El valor ingresado para el campo " + campo + " debe ser de tipo numérico, intente nuevamente.");
             }
+
+            else if (dniValidado <= 0)
+            {
+                Console.WriteLine("ERROR! El valor ingresado para el campo " + campo + " no debe ser negativo, intente nuevamente.");
+            }
+
             else if (dniValidado.ToString().Length > 10)
             {
                 Console.WriteLine("ERROR! El valor ingresado para el campo " + campo + " no debe poseer más de 10 dígitos, intente nuevamente.");
@@ -90,14 +125,18 @@ namespace ProyectoHotel.PresentacionConsola
             {
                 Console.WriteLine("ERROR! El campo " + campo + " no puede ser vacío, intente nuevamente.");
             }
+
             else if (!DateTime.TryParse(fecha, out fechaValidada))
             {
                 Console.WriteLine("El campo " + campo + " debe ser de tipo fecha y tener un formato válido del tipo dd/mm/aaaa, intente nuevamente.");
             }
+
             else if (fechaValidada > DateTime.Now)
             {
                 Console.WriteLine("El campo " + campo + " no puede ser superior al día de hoy, intente nuevamente.");
             }
+
+            else
             {
                 flag = true;
             }
@@ -142,6 +181,7 @@ namespace ProyectoHotel.PresentacionConsola
             {
                 Console.WriteLine("ERROR! El mail ingresado es inválido porqué finaliza con un punto, intente nuevamente."); //Si el mail ingresado termina con '.' da error
             }
+
             try
             {
                 var addr = new System.Net.Mail.MailAddress(mail);
@@ -155,10 +195,133 @@ namespace ProyectoHotel.PresentacionConsola
                     return false;
                 }
             }
+
             catch
             {
                 return false;
             }
+        }
+
+        internal static bool FuncionValidacionCodigo(string codigo, ref int codigoValidado, string campo)
+        {
+            //Declaración de variables
+            bool flag = false;
+
+            if (string.IsNullOrEmpty(codigo))
+            {
+                Console.WriteLine("ERROR! El campo " + campo + " no puede ser vacío, intente nuevamente.");
+            }
+
+            else if (!int.TryParse(codigo, out codigoValidado))
+            {
+                Console.WriteLine("ERROR! El valor ingresado para el campo " + campo + " debe ser de tipo numérico, intente nuevamente.");
+            }
+
+            else if (codigoValidado <= 0)
+            {
+                Console.WriteLine("ERROR! El valor ingresado para el campo " + campo + " no debe ser negativo, intente nuevamente.");
+            }
+
+            else
+            {
+                flag = true;
+            }
+
+            return flag;
+        }
+
+        internal static bool FuncionValidacionNumeroNatural(string numero, ref int numeroValidado, string campo)
+        {
+            //Declaración de variables
+            bool flag = false;
+
+            if (string.IsNullOrEmpty(numero))
+            {
+                Console.WriteLine("ERROR! El campo " + campo + " no puede ser vacío, intente nuevamente.");
+            }
+
+            else if (!int.TryParse(numero, out numeroValidado))
+            {
+                Console.WriteLine("ERROR! El valor ingresado para el campo " + campo + " debe ser de tipo numérico, intente nuevamente.");
+            }
+
+            else if (numeroValidado <= 0)
+            {
+                Console.WriteLine("ERROR! El valor ingresado para el campo " + campo + " no debe ser negativo, intente nuevamente.");
+            }
+
+            else
+            {
+                flag = true;
+            }
+
+            return flag;
+        }
+
+        internal static bool FuncionValidacionOpcionCancelacion(ref string opcion, ref bool esCancelable)
+        {
+            //Declaración de variables
+            bool flag = false;
+
+            do
+            {
+                opcion = Console.ReadLine();
+
+                if (string.IsNullOrEmpty(opcion))
+                {
+                    Console.WriteLine("ERROR! La opción ingresada no puede ser vacío, intente nuevamente.");
+                }
+
+                else if (opcion == "1" || opcion == "2")
+                {
+                    flag = true;
+
+                    if (opcion == "1")
+                    {
+                        esCancelable = true;
+                    }
+                    else if (opcion == "2")
+                    {
+                        esCancelable = false;
+                    }
+                }
+
+                else
+                {
+                    Console.WriteLine("ERROR! La opción " + opcion + " no es una opción válida, intente nuevamente.");
+                }
+
+            } while (flag == false);
+
+            return flag;
+        }
+
+        internal static bool FuncionValidacionPrecio(string precio, ref double precioValidado, string campo)
+        {
+            //Declaración de variables
+            bool flag = false;
+
+            if (string.IsNullOrEmpty(precio))
+            {
+                Console.WriteLine("ERROR! El campo " + campo + " no puede ser vacío, intente nuevamente.");
+            }
+
+            else if (!double.TryParse(precio, out precioValidado))
+            {
+                Console.WriteLine("ERROR! El valor ingresado para el campo " + campo + " debe ser de tipo numérico, intente nuevamente.");
+            }
+
+            else if (precioValidado <= 0)
+            {
+                Console.WriteLine("ERROR! El valor ingresado para el campo " + campo + " no debe ser negativo, intente nuevamente.");
+            }
+
+            else
+            {
+                flag = true;
+            }
+
+            return flag;
         }
     }
 }

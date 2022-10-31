@@ -61,12 +61,12 @@ namespace ProyectoHotel.PresentacionConsola
                             break;
 
                         case "7":
-                            //ListarHa(); //Listar habitaciones del sistema
+                            ListarHa(); //Listar habitaciones por hotel del sistema
 
                             break;
 
                         case "8":
-                            //AgregarHa(); //Agrego una habitación al sistema
+                            AgregarHa(); //Agrego una habitación al sistema
 
                             break;
 
@@ -106,7 +106,7 @@ namespace ProyectoHotel.PresentacionConsola
 
             if (_listadoClientes.Count == 0 || _listadoClientes == null) //Valido si la lista de clientes está vacía, caso afirmativo le informo al usuario y le pido que ingrese otra opción
             {
-                Console.WriteLine("La agenda está vacía, por favor ingrese otra opción.");
+                Console.WriteLine("La lista de clientes está vacía, por favor ingrese otra opción.");
 
                 Console.ReadKey();
                 Console.Clear();
@@ -117,7 +117,7 @@ namespace ProyectoHotel.PresentacionConsola
                 {
                     _acumulador +=
                         Environment.NewLine +
-                        c.ToString() +
+                        c.GetCredencial() +
                         Environment.NewLine
                         ;
                 }
@@ -145,6 +145,8 @@ namespace ProyectoHotel.PresentacionConsola
             string _direccionCliente;
             string _telefonoCliente;
             long _telefonoClienteValidado = 0;
+            string _fechaNacimientoCliente;
+            DateTime _fechaNacimientoClienteValidada = DateTime.Now;
             string _fechaAltaCliente;
             DateTime _fechaAltaClienteValidada = DateTime.Now;
             string _mailCliente;
@@ -176,6 +178,14 @@ namespace ProyectoHotel.PresentacionConsola
                 Console.WriteLine("Ingrese el apellido del cliente a agregar");
                 _apellidoCliente = Console.ReadLine();
                 _flag = ValidacionesInputHelper.FuncionValidacionCadena(ref _apellidoCliente, "Apellido");
+
+            } while (_flag == false);
+
+            do
+            {
+                Console.WriteLine("Ingrese la fecha de nacimiento del cliente a agregar");
+                _fechaNacimientoCliente = Console.ReadLine();
+                _flag = ValidacionesInputHelper.FuncionValidacionFecha(_fechaNacimientoCliente, ref _fechaNacimientoClienteValidada, "Fecha de nacimiento");
 
             } while (_flag == false);
 
@@ -219,6 +229,7 @@ namespace ProyectoHotel.PresentacionConsola
                 _direccionCliente,
                 _telefonoClienteValidado,
                 _mailCliente,
+                _fechaNacimientoClienteValidada,
                 _idCliente,
                 _fechaAltaClienteValidada
                 )
@@ -227,6 +238,144 @@ namespace ProyectoHotel.PresentacionConsola
             C.AgregarCliente(nuevoCliente); //Invoco a la función 'AgregarCliente' de la capa de negocio y le indico que agregue el cliente con los datos que puso el usuario
 
             Console.WriteLine("El cliente fue agregado exitosamente al sistema, presione Enter para elegir otra opción.");
+
+            Console.ReadKey();
+            Console.Clear();
+        }
+
+        public static void ListarHa()
+        {
+            //Declaración de variables
+            //-------------------------------------------------------------
+            HabitacionNegocio Ha = new HabitacionNegocio();
+            List<Habitacion> _listadoHabitaciones = new List<Habitacion>();
+            string _idHotel;
+            int _idHotelValidado = 0;
+            bool _flag;
+            string _acumulador = "";
+            //-------------------------------------------------------------
+
+            do
+            {
+                Console.WriteLine("Ingrese el ID del hotel para listar las habitaciones:");
+                //Agregar código para mostrarle al usuario el listado de IDs de los hoteles actuales
+                _idHotel = Console.ReadLine();
+
+                _flag = ValidacionesInputHelper.FuncionValidacionCodigo(_idHotel, ref _idHotelValidado, "ID Hotel");
+
+            } while (_flag == false);
+
+            _listadoHabitaciones = Ha.GetLista(_idHotelValidado.ToString()); //Traigo el listado de habitaciones por hotel de la capa de negocio que a su vez lo trae de la capa de datos
+
+            if (_listadoHabitaciones.Count == 0 || _listadoHabitaciones == null) //Valido si la lista de habitaciones por hotel está vacía, caso afirmativo le informo al usuario y le pido que ingrese otra opción
+            {
+                Console.WriteLine("El hotel (ID: #" + _idHotelValidado + ") no posee habitaciones, por favor ingrese otra opción.");
+
+                Console.ReadKey();
+                Console.Clear();
+            }
+            else
+            {
+                foreach (Habitacion ha in _listadoHabitaciones)
+                {
+                    _acumulador +=
+                        Environment.NewLine +
+                        ha.GetCredencial() +
+                        Environment.NewLine
+                        ;
+                }
+
+                Console.WriteLine("Listado de todas las habitaciones del hotel (ID: #" + _idHotelValidado + "): " + Environment.NewLine + _acumulador + Environment.NewLine);
+
+                Console.WriteLine("Presione Enter para elegir otra opción");
+                Console.ReadKey();
+                Console.Clear();
+            }
+        }
+
+        public static void AgregarHa()
+        {
+            //Declaración de variables
+            //---------------------------------------------------------
+            HabitacionNegocio Ha = new HabitacionNegocio();
+            List<Habitacion> _listadoHabitaciones = new List<Habitacion>();
+            bool _flag;
+            string _idHotel;
+            int _idHotelValidado = 0;
+            int _idHabitacion;
+            string _opcionCategoriaHabitacion = "";
+            string _cantidadPlazasHabitacion;
+            int _cantidadPlazasHabitacionValidada = 0;
+            string _opcionCancelacion = "";
+            bool _esCancelable = false;
+            string _precioHabitacion;
+            double _precioHabitacionValidado = 0;
+            //---------------------------------------------------------
+
+            do
+            {
+                Console.WriteLine("Ingrese el ID del hotel al cual desea agregar una habitación:");
+                //Agregar código para mostrarle al usuario el listado de IDs de los hoteles actuales
+                _idHotel = Console.ReadLine();
+
+                _flag = ValidacionesInputHelper.FuncionValidacionCodigo(_idHotel, ref _idHotelValidado, "ID Hotel");
+
+            } while (_flag == false);
+
+            _listadoHabitaciones = Ha.GetLista(_idHotelValidado.ToString()); //Traigo la lista de habitaciones por hotel de la capa de negocio
+
+            _idHabitacion = _listadoHabitaciones.Last().Id + 1; //Le asigno el código de habitación + 1 partiendo del último cliente de la lista
+
+            do
+            {
+                Console.WriteLine("Ingrese el número correspondiente a la categoría de la habitación a agregar");
+                MenuHelper.OpcionesCategoriaHabitacion();
+
+                _flag = ValidacionesInputHelper.FuncionValidacionOpcionCategoriaHabitacion(ref _opcionCategoriaHabitacion);
+
+            } while (_flag == false);
+
+            do
+            {
+                Console.WriteLine("Ingrese la cantidad de plazas de la habitación a agregar");
+                _cantidadPlazasHabitacion = Console.ReadLine();
+
+                _flag = ValidacionesInputHelper.FuncionValidacionNumeroNatural(_cantidadPlazasHabitacion, ref _cantidadPlazasHabitacionValidada, "Cantidad de plazas");
+
+            } while (_flag == false);
+
+            do
+            {
+                Console.WriteLine("Ingrese '1' si la habitación a agregar es cancelable y '2' si no es cancelable");
+                _opcionCancelacion = Console.ReadLine();
+
+                _flag = ValidacionesInputHelper.FuncionValidacionOpcionCancelacion(ref _opcionCancelacion, ref _esCancelable);
+
+            } while (_flag == false);
+
+            do
+            {
+                Console.WriteLine("Ingrese el precio de la habitación a agregar");
+                _precioHabitacion = Console.ReadLine();
+
+                _flag = ValidacionesInputHelper.FuncionValidacionPrecio(_precioHabitacion, ref _precioHabitacionValidado, "Precio");
+
+            } while (_flag == false);
+
+            Habitacion nuevaHabitacion = new Habitacion //Instancio la clase 'Habitacion' y le asigno todos los inputs validados que ingresó el usuario
+                (
+                _idHabitacion,
+                _idHotelValidado,
+                _opcionCategoriaHabitacion,
+                -_cantidadPlazasHabitacionValidada,
+                _esCancelable,
+                _precioHabitacionValidado
+                )
+                ;
+
+            Ha.AgregarHabitacion(nuevaHabitacion); //Invoco a la función 'AgregarHabitacion' de la capa de negocio y le indico que agregue la habitación con los datos que puso el usuario
+
+            Console.WriteLine("La habitación fue agregado exitosamente al sistema, presione Enter para elegir otra opción.");
 
             Console.ReadKey();
             Console.Clear();
