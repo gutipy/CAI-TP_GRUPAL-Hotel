@@ -6,9 +6,9 @@
 
 [3. Otro item](https://github.com/gutipy/CAI-TP_GRUPAL-Hotel#3-otro-item)
 
-## 1. Participantes del proyecto
+## 1. Participantes del proyecto 👨🏻‍💻
 
-## 2. Contexto
+## 2. Contexto 📚
 
 El famoso Richard Texan ya no sabe en qué invertir su dinero. Su último capricho fue comprar una vieja y abandonada cadena de hoteles para refaccionar.
 <br> 
