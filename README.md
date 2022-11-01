@@ -14,6 +14,7 @@ Descripción
 
 ### - Julian Aleksandrowicz
 
+![](Imagenes/IMG_0847.jpeg)
 Descripción
 
 ### - Tomás Hardoy
