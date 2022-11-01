@@ -1,10 +1,10 @@
 # Proyecto: Aplicación para Gestión Hotelera
 
-<a href="https://github.com/gutipy/CAI-TP_GRUPAL-Hotel/blob/main/README.md#1-participantes-del-proyecto">1. Participantes del proyecto</a>
-<br>
-<a href="https://github.com/gutipy/CAI-TP_GRUPAL-Hotel/edit/main/README.md#2-contexto">2. Contexto</a>
-<br>
-<a href="https://github.com/gutipy/CAI-TP_GRUPAL-Hotel/edit/main/README.md#3-otro-item">3. Otro item</a>
+[1. Participantes del proyecto](https://github.com/gutipy/CAI-TP_GRUPAL-Hotel/blob/main/README.md#1-participantes-del-proyecto/)
+
+[2. Contexto](https://github.com/gutipy/CAI-TP_GRUPAL-Hotel/edit/main/README.md#2-contexto/)
+
+[3. Otro item](https://github.com/gutipy/CAI-TP_GRUPAL-Hotel/edit/main/README.md#3-otro-item/)
 
 ## 1. Participantes del proyecto
 
