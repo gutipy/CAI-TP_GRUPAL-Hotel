@@ -1,4 +1,4 @@
-# Proyecto: Aplicación para Gestión Hotelera
+# 🏨 Proyecto: Aplicación para Gestión Hotelera 🏨
 
 [1. Participantes del proyecto](https://github.com/gutipy/CAI-TP_GRUPAL-Hotel#1-participantes-del-proyecto)
 
