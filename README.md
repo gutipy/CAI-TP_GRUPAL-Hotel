@@ -8,7 +8,7 @@
 
 ## 1. Participantes del proyecto 👨🏻‍💻
 
-### - Agustin Gutiérrez
+### - Agustín Gutiérrez
 
 Descripción
 
