@@ -4,7 +4,7 @@
 
 [2. Contexto](https://github.com/gutipy/CAI-TP_GRUPAL-Hotel#2-contexto)
 
-[3. Situación ficticia](https://github.com/gutipy/CAI-TP_GRUPAL-Hotel#3-otro-item)
+[3. Situación ficticia](https://github.com/gutipy/CAI-TP_GRUPAL-Hotel#3-situación-ficticia-)
 
 ## 1. Participantes del proyecto 👨🏻‍💻
 
