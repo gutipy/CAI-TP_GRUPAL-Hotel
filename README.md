@@ -4,7 +4,7 @@
 
 [2. Contexto](https://github.com/gutipy/CAI-TP_GRUPAL-Hotel#2-contexto)
 
-[3. Otro item](https://github.com/gutipy/CAI-TP_GRUPAL-Hotel/edit/main/README.md#3-otro-item/)
+[3. Otro item](https://github.com/gutipy/CAI-TP_GRUPAL-Hotel#3-otro-item)
 
 ## 1. Participantes del proyecto
 
