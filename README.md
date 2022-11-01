@@ -1,14 +1,13 @@
 # Proyecto: Aplicación para Gestión Hotelera
-  <ol>
-    <li><a href="participantes">Participantes del proyecto</a></li>
-    <li><a href="contexto">Contexto</a></li>
-    <li><a href="otro">Otro item</a></li>
-  </ol>
 
-## <p id="participantes">1. Participantes del proyecto</p>
+<a href="https://github.com/gutipy/CAI-TP_GRUPAL-Hotel/blob/main/README.md#1-participantes-del-proyecto">1. Participantes del proyecto</a>
+2. Contexto
+3. Otro item
 
-## <p id="contexto">2. Contexto</p>
-<p>
+## 1. Participantes del proyecto
+
+## 2. Contexto
+
 El famoso Richard Texan ya no sabe en qué invertir su dinero. Su último capricho fue comprar una vieja y abandonada cadena de hoteles para refaccionar.
 <br> 
 <br>
@@ -16,6 +15,6 @@ Al llegar el momento de poder brindar servicio nuevamente, contrató a los mejor
 <br>
 <br>
 Lo que Texan consideraba crítico, y su equipo también, eran las reservas de las habitaciones en cada uno de los hoteles y, obviamente, poder obtener los reportes que sean necesarios para la gestión del hotel.
-</p>
 
-## <p id="otro">3. Otro item</p>
+
+## 3. Otro item
