@@ -8,7 +8,7 @@ namespace ProyectoHotel.Entidades
 {
     internal class Hotel
     {
-        public Hotel(int id, string nombre, string direccion, int estrellas, Reserva amenities)
+        public Hotel(int id, string nombre, string direccion, int estrellas, bool amenities)
         {
             _id = id;
             _nombre = nombre;
@@ -21,7 +21,7 @@ namespace ProyectoHotel.Entidades
         private string _nombre;
         private string _direccion;
         private int _estrellas;
-        private Reserva _amenities;
+        private bool _amenities;
 
         public int Id
         {
@@ -43,7 +43,7 @@ namespace ProyectoHotel.Entidades
             get { return _estrellas; }
         }
 
-        public Reserva Amenities
+        public bool Amenities
         {
             get { return _amenities; }
         }
