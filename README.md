@@ -10,6 +10,8 @@
 
 ### - Agustín Gutiérrez
 
+![Foto de perfil de Agustín Gutiérrez](https://github.com/gutipy/CAI-TP_GRUPAL-Hotel/blob/bc72f5430ffbf8da2d4bef8d2cf6aadfbd787e24/Imagenes/perfil_agustin.jpg)
+
 Descripción
 
 ### - Julian Aleksandrowicz
