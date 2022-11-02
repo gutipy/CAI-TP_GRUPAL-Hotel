@@ -323,5 +323,43 @@ namespace ProyectoHotel.PresentacionConsola
 
             return flag;
         }
+
+        internal static bool FuncionValidacionOpcionAmenities(ref string opcion, ref bool tieneAmenities)
+        {
+            //Declaración de variables
+            bool flag = false;
+
+            do
+            {
+                opcion = Console.ReadLine();
+
+                if (string.IsNullOrEmpty(opcion))
+                {
+                    Console.WriteLine("ERROR! La opción ingresada no puede ser vacío, intente nuevamente.");
+                }
+
+                else if (opcion == "1" || opcion == "2")
+                {
+                    flag = true;
+
+                    if (opcion == "1")
+                    {
+                        tieneAmenities = true;
+                    }
+                    else if (opcion == "2")
+                    {
+                        tieneAmenities = false;
+                    }
+                }
+
+                else
+                {
+                    Console.WriteLine("ERROR! La opción " + opcion + " no es una opción válida, intente nuevamente.");
+                }
+
+            } while (flag == false);
+
+            return flag;
+        }
     }
 }

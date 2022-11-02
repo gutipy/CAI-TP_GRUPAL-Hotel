@@ -51,12 +51,12 @@ namespace ProyectoHotel.PresentacionConsola
                             break;
 
                         case "5":
-                            //ListarHo(); //Listar hoteles del sistema
+                            ListarHo(); //Listar hoteles del sistema
 
                             break;
 
                         case "6":
-                            //AgregarHo(); //Agrego un hotel al sistema
+                            AgregarHo(); //Agrego un hotel al sistema
 
                             break;
 
@@ -106,7 +106,7 @@ namespace ProyectoHotel.PresentacionConsola
 
             if (_listadoClientes.Count == 0 || _listadoClientes == null) //Valido si la lista de clientes está vacía, caso afirmativo le informo al usuario y le pido que ingrese otra opción
             {
-                Console.WriteLine("La lista de clientes está vacía, por favor ingrese otra opción.");
+                Console.WriteLine("La agenda está vacía, por favor ingrese otra opción.");
 
                 Console.ReadKey();
                 Console.Clear();
@@ -324,7 +324,7 @@ namespace ProyectoHotel.PresentacionConsola
 
             _listadoHabitaciones = Ha.GetLista(_idHotelValidado.ToString()); //Traigo la lista de habitaciones por hotel de la capa de negocio
 
-            _idHabitacion = _listadoHabitaciones.Last().Id + 1; //Le asigno el código de habitación + 1 partiendo del último cliente de la lista
+            _idHabitacion = _listadoHabitaciones.Last().Id + 1; //Le asigno el código de habitación + 1 partiendo de la última habitación de la lista
 
             do
             {
@@ -376,6 +376,116 @@ namespace ProyectoHotel.PresentacionConsola
             Ha.AgregarHabitacion(nuevaHabitacion); //Invoco a la función 'AgregarHabitacion' de la capa de negocio y le indico que agregue la habitación con los datos que puso el usuario
 
             Console.WriteLine("La habitación fue agregado exitosamente al sistema, presione Enter para elegir otra opción.");
+
+            Console.ReadKey();
+            Console.Clear();
+        }
+
+        public static void ListarHo()
+        {
+            //Declaración de variables
+            //----------------------------------------------
+            HotelNegocio Ho = new HotelNegocio();
+            List<Hotel> _listadoHoteles = new List<Hotel>();
+            string _acumulador = "";
+            //----------------------------------------------
+
+            _listadoHoteles = Ho.GetLista(); //Traigo el listado de hoteles de la capa de negocio que a su vez lo trae de la capa de datos
+
+            if (_listadoHoteles.Count == 0 || _listadoHoteles == null) //Valido si la lista de hoteles está vacía, caso afirmativo le informo al usuario y le pido que ingrese otra opción
+            {
+                Console.WriteLine("La lista de hoteles está vacía, por favor ingrese otra opción.");
+
+                Console.ReadKey();
+                Console.Clear();
+            }
+            else
+            {
+                foreach (Hotel ho in _listadoHoteles)
+                {
+                    _acumulador +=
+                        Environment.NewLine +
+                        ho.GetCredencial() +
+                        Environment.NewLine
+                        ;
+                }
+
+                Console.WriteLine("Listado de todos los hoteles del sistema: " + Environment.NewLine + _acumulador + Environment.NewLine);
+
+                Console.WriteLine("Presione Enter para elegir otra opción");
+
+                Console.ReadKey();
+                Console.Clear();
+            }
+        }
+
+        public static void AgregarHo()
+        {
+            //Declaración de variables
+            //---------------------------------------------------
+            HotelNegocio Ho = new HotelNegocio();
+            List<Hotel> _listadoHoteles = new List<Hotel>();
+            bool _flag;
+            int _idHotel;
+            string _nombreHotel;
+            string _direccionHotel;
+            string _cantidadEstrellas;
+            int _cantidadEstrellasValidada = 0;
+            string _opcionAmenities;
+            bool _tieneAmenities = false;
+            //---------------------------------------------------
+
+            _listadoHoteles = Ho.GetLista(); //Traigo la lista de hoteles de la capa de negocio
+
+            _idHotel = _listadoHoteles.Last().Id + 1; //Le asigno el código de hotel + 1 partiendo del último hotel de la lista
+
+            do
+            {
+                Console.WriteLine("Ingrese el nombre del hotel a agregar");
+                _nombreHotel = Console.ReadLine();
+                _flag = ValidacionesInputHelper.FuncionValidacionCadena(ref _nombreHotel, "Nombre");
+
+            } while (_flag == false);
+
+            do
+            {
+                Console.WriteLine("Ingrese la dirección del hotel a agregar");
+                _direccionHotel = Console.ReadLine();
+                _flag = ValidacionesInputHelper.FuncionValidacionCadena(ref _direccionHotel, "Dirección");
+
+            } while (_flag == false);
+
+            do
+            {
+                Console.WriteLine("Ingrese la cantidad de estrellas (de 1⭐ a 5⭐) del hotel a agregar");
+                _cantidadEstrellas = Console.ReadLine();
+
+                _flag = ValidacionesInputHelper.FuncionValidacionNumeroNatural(_cantidadEstrellas, ref _cantidadEstrellasValidada, "Cantidad de estrellas");
+
+            } while (_flag == false);
+
+            do
+            {
+                Console.WriteLine("Ingrese '1' si el hotel a agregar posee amenities y '2' si no posee amenities");
+                _opcionAmenities = Console.ReadLine();
+
+                _flag = ValidacionesInputHelper.FuncionValidacionOpcionAmenities(ref _opcionAmenities, ref _tieneAmenities);
+
+            } while (_flag == false);
+
+            Hotel nuevoHotel = new Hotel //Instancio la clase 'Hotel' y le asigno todos los inputs validados que ingresó el usuario
+                (
+                _idHotel,
+                _nombreHotel,
+                _direccionHotel,
+                _cantidadEstrellasValidada,
+                _tieneAmenities
+                )
+                ;
+
+            Ho.AgregarHotel(nuevoHotel); //Invoco a la función 'AgregarHotel' de la capa de negocio y le indico que agregue el hotel con los datos que puso el usuario
+
+            Console.WriteLine("El hotel fue agregado exitosamente al sistema, presione Enter para elegir otra opción.");
 
             Console.ReadKey();
             Console.Clear();
