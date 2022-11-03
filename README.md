@@ -22,7 +22,7 @@ Descripción
 
 ### - Tomás Hardoy
 
-![Foto de perfil de Tomas Hardoy](https://github.com/gutipy/CAI-TP_GRUPAL-Hotel/blob/f05c9549beb923bda129206b6a797e33f29f0e74/Imagenes/Tomas_Hardoy_photo.jpg)
+![Foto de perfil de Tomas Hardoy](https://github.com/gutipy/CAI-TP_GRUPAL-Hotel/blob/f05c9549beb923bda129206b6a797e33f29f0e74/Imagenes/tomas_hardoy.jpg)
 
 Descripción
 
