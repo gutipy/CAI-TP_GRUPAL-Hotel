@@ -16,13 +16,13 @@ Descripción
 
 ### - Julian Aleksandrowicz
 
-![Foto de perfil de Julian Aleksandrowicz](https://github.com/gutipy/CAI-TP_GRUPAL-Hotel/blob/f05c9549beb923bda129206b6a797e33f29f0e74/Imagenes/perfil_julian.jpeg)
+![Foto de perfil de Julián Aleksandrowicz](https://github.com/gutipy/CAI-TP_GRUPAL-Hotel/blob/f05c9549beb923bda129206b6a797e33f29f0e74/Imagenes/perfil_julian.jpeg)
 
 Descripción
 
 ### - Tomás Hardoy
 
-![Foto de perfil de Tomas Hardoy](https://github.com/gutipy/CAI-TP_GRUPAL-Hotel/blob/41c763809828720df8a759de7fc895f6b8939797/Imagenes/tomas_hardoy1.png)
+![Foto de perfil de Tomás Hardoy](https://github.com/gutipy/CAI-TP_GRUPAL-Hotel/blob/41c763809828720df8a759de7fc895f6b8939797/Imagenes/tomas_hardoy1.png)
 
 Descripción
 
