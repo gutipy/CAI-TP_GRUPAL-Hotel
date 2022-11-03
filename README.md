@@ -6,7 +6,7 @@
 
 [3. Situación ficticia](https://github.com/gutipy/CAI-TP_GRUPAL-Hotel#3-situación-ficticia-)
 
-[4. Metodología y características técnicas del desarrollo](https://github.com/gutipy/CAI-TP_GRUPAL-Hotel#4-metodolog%C3%ADa-y-caracter%C3%ADsticas-técnicas-del-desarrollo)
+[4. Metodología y características técnicas del desarrollo](https://github.com/gutipy/CAI-TP_GRUPAL-Hotel#4-metodolog%C3%ADa-y-caracter%C3%ADsticas-técnicas-del-desarrollo-%EF%B8%8F)
 
 ## 1. Participantes del proyecto 👨🏻‍💻
 
