@@ -6,7 +6,7 @@
 
 [3. Situación ficticia](https://github.com/gutipy/CAI-TP_GRUPAL-Hotel#3-situación-ficticia-)
 
-[4. Metodología y características del desarrollo](https://github.com/gutipy/CAI-TP_GRUPAL-Hotel#4-metodolog%C3%ADa-y-caracter%C3%ADsticas-del-desarrollo)
+[4. Metodología y características técnicas del desarrollo](https://github.com/gutipy/CAI-TP_GRUPAL-Hotel#4-metodolog%C3%ADa-y-caracter%C3%ADsticas-del-desarrollo)
 
 ## 1. Participantes del proyecto 👨🏻‍💻
 
@@ -48,6 +48,6 @@ Al llegar el momento de poder brindar servicio nuevamente, contrató a los mejor
 
 Lo que Texan consideraba crítico, y su equipo también, eran las reservas de las habitaciones en cada uno de los hoteles y, obviamente, poder obtener los reportes que sean necesarios para la gestión del hotel.
 
-## 4. Metodología y características del desarrollo
+## 4. Metodología y características técnicas del desarrollo
 
 Explicamos como trabajamos y que usamos (visual, github, etc). problemas que surgieron y soluciones.
