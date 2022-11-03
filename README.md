@@ -18,7 +18,11 @@ Descripción
 
 ![Foto de perfil de Julián Aleksandrowicz](https://github.com/gutipy/CAI-TP_GRUPAL-Hotel/blob/f05c9549beb923bda129206b6a797e33f29f0e74/Imagenes/perfil_julian.jpeg)
 
-Descripción
+Nacido en Buenos Aires, Argentina. 28 años. Está cursando las últimas 4 materias de la carrera de Lic. en Sistemas.
+
+Actualmente trabaja en la Empresa Argentina de Navegación Aérea como analista funcional y administrador de proyectos.
+
+Dentro de su plan de desarrollo profesional se encuentra en búsqueda de una oportunidad para comenzar su camino como desarrollador de software en un equipo que le permita demostrar sus conocimientos aprendidos y adquirir nuevas habilidades.
 
 ### - Tomás Hardoy
 
