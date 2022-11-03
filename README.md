@@ -34,6 +34,8 @@ Descripción
 
 Este proyecto surge como **trabajo integrador** de la materia **"Construcción de Aplicaciones Informáticas"** dentro de la carrera de **Lic. en Sistemas de Información de las Organizaciones** de la Facultad de Ciencias Económicas (Universidad de Buenos Aires).
 
+La materia se desarrolló utilizando el **lenguaje C#**. El enfoque permitió no solo aplicar fundamentos de diseño y programación, sino también **arquitectura en capas**, metodologías de desarrollo, tipos de pruebas, **programación orientada a objetos**; con foco en el correcto diseño de clases, herencia, polimorfismo, entre otros.
+
 ## 3. Situación ficticia 💰
 
 El famoso Richard Texan ya no sabe en qué invertir su dinero. Su último capricho fue comprar una vieja y abandonada cadena de hoteles para refaccionar.
@@ -43,3 +45,7 @@ Al llegar el momento de poder brindar servicio nuevamente, contrató a los mejor
 
 
 Lo que Texan consideraba crítico, y su equipo también, eran las reservas de las habitaciones en cada uno de los hoteles y, obviamente, poder obtener los reportes que sean necesarios para la gestión del hotel.
+
+## 4. Metodología y características del desarrollo
+
+Explicamos como trabajamos y que usamos (visual, github, etc). problemas que surgieron y soluciones.
