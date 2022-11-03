@@ -36,5 +36,12 @@ namespace ProyectoHotel.Entidades
         public bool Cancelacion { get { return _cancelacion; } }
 
         public double Precio { get { return _precio; } }
+
+        public override string ToString()
+        {
+            return "ID (Habitación): " + this._id + "\n" + "ID (Hotel): " + this._idHotel + "\n" + "Categoría: " + this._categoria +
+                "\n" + "Cantidad de plazas: " + this._cantidadPlazas + "\n" + "Cancelación: " + this._cancelacion + "\n" + "Precio: "
+                + this._precio + "\n";
+        }
     }
 }
