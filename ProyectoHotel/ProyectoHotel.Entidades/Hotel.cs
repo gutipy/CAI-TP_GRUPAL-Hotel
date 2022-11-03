@@ -47,5 +47,11 @@ namespace ProyectoHotel.Entidades
         {
             get { return _amenities; }
         }
+
+        public override string ToString()
+        {
+            return "ID: " + this._id + "\n" + "Nombre: " + this._nombre + "\n" + "Dirección: " + this._direccion +
+                "\n" + "Estrellas: " + this._estrellas + "\n" + "Amenities: " + this._amenities + "\n";
+        }
     }
 }
