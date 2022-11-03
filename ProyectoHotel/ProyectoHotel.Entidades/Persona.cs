@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ProyectoHotel.Entidades
 {
-    public class Persona
+    internal class Persona:Cliente
     {
     }
 }

@@ -25,34 +25,23 @@ namespace ProyectoHotel.Entidades
         private DateTime _fechaIngreso;
         private DateTime _fechaEgreso;
 
-        public int Id
-        {
-            get { return _id; }
-        }
+        public int Id { get { return _id; } }
 
-        public int IdCliente
-        {
-            get { return _idCliente; }
-        }
+        public int IdCliente { get { return _idCliente; } }
 
-        public int IdHabitacion
-        {
-            get { return _idHabitacion; }
-        }
+        public int IdHabitacion { get { return _idHabitacion; } }
 
-        public int CantidadHuespedes
-        {
-            get { return _cantidadHuespedes; }
-        }
+        public int CantidadHuespedes { get { return _cantidadHuespedes; } }
 
-        public DateTime FechaIngreso
-        {
-            get { return _fechaIngreso; }
-        }
+        public DateTime FechaIngreso { get { return _fechaIngreso; } }
 
-        public DateTime FechaEgreso
+        public DateTime FechaEgreso { get { return _fechaEgreso; } }
+
+        public override string ToString()
         {
-            get { return _fechaEgreso; }
+            return "ID de la reserva: " + this._id + "\n" + "ID del cliente: " + this._idCliente + "\n" + "ID de la habitación: " + this._idHabitacion +
+                "\n" + "Cantidad de huéspedes: " + this._cantidadHuespedes + "\n" + "Fecha de ingreso: " + this._fechaIngreso + "\n" + "Fecha de egreso: "
+                + this._fechaEgreso + "\n";
         }
     }
 }
