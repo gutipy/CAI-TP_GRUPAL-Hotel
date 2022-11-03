@@ -6,6 +6,8 @@
 
 [3. Situación ficticia](https://github.com/gutipy/CAI-TP_GRUPAL-Hotel#3-situación-ficticia-)
 
+[4. Metodología y características del desarrollo](https://github.com/gutipy/CAI-TP_GRUPAL-Hotel#4-metodolog%C3%ADa-y-caracter%C3%ADsticas-del-desarrollo)
+
 ## 1. Participantes del proyecto 👨🏻‍💻
 
 ### - Agustín Gutiérrez
