@@ -14,7 +14,11 @@
 
 ![Foto de perfil de Agustín Gutiérrez](https://github.com/gutipy/CAI-TP_GRUPAL-Hotel/blob/bc72f5430ffbf8da2d4bef8d2cf6aadfbd787e24/Imagenes/perfil_agustin.jpg)
 
-Descripción
+Nacido en Buenos Aires, Argentina. 26 años. Está cursando las últimas 5 materias de la carrera de Lic. en Sistemas.
+
+Actualmente trabaja en Swiss Medical como analista de auditoría interna de Sistemas.
+
+Tiene como objetivo profesional la búsqueda de aprendizaje de nuevos conocimientos en otras ramas de Sistemas tales como Desarrollo de software y Seguridad de la información.
 
 ### - Julian Aleksandrowicz
 
