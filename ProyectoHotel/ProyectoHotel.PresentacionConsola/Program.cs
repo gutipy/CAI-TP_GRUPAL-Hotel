@@ -71,17 +71,17 @@ namespace ProyectoHotel.PresentacionConsola
                             break;
 
                         case "9":
-                            //TraerReservasPorC(); //Traigo las reservas realizadas por cliente
+                            TraerReservasPorC(); //Traigo las reservas realizadas por cliente
 
                             break;
 
                         case "10":
-                            //TraerHabitacionesPorHo(); //Traigo las habitaciones por hotel
+                            TraerHabitacionesPorHo(); //Traigo las habitaciones por hotel
 
                             break;
 
                         case "11":
-                            //Salir(); //Salir del programa
+                            Salir(); //Salir del programa
 
                             break;
                     }
@@ -638,6 +638,70 @@ namespace ProyectoHotel.PresentacionConsola
 
             Console.ReadKey();
             Console.Clear();
+        }
+
+        public static void TraerReservasPorC()
+        {
+            //Declaración de variables
+            //----------------------------------------------
+            ReservaNegocio R = new ReservaNegocio();
+            List<Reserva> _listadoReservasPorCliente = new List<Reserva>();
+            string _acumulador = "";
+            bool _flag;
+            string _idCliente;
+            int _idClienteValidado = 0;
+
+            //----------------------------------------------
+
+            do
+            {
+                Console.WriteLine("Ingrese el ID del cliente del cuál desea traer las reservas");
+                _idCliente = Console.ReadLine();
+
+                _flag = ValidacionesInputHelper.FuncionValidacionCodigo(_idCliente, ref _idClienteValidado, "ID Cliente");
+
+            } while (_flag == false);
+
+            _listadoReservasPorCliente = R.GetListaPorCliente(_idClienteValidado); //Traigo el listado de reservas por cliente de la capa de negocio que a su vez lo trae de la capa de datos
+
+            if (_listadoReservasPorCliente.Count == 0 || _listadoReservasPorCliente == null) //Valido si la lista de reservas para ese cliente está vacía, caso afirmativo le informo al usuario y le pido que ingrese otra opción
+            {
+                Console.WriteLine("La lista de reservas para el cliente con ID " + _idClienteValidado + " está vacía, por favor ingrese otra opción.");
+
+                Console.ReadKey();
+                Console.Clear();
+            }
+            else
+            {
+                foreach (Reserva r in _listadoReservasPorCliente)
+                {
+                    _acumulador +=
+                        Environment.NewLine +
+                        r.GetCredencial() +
+                        Environment.NewLine
+                        ;
+                }
+
+                Console.WriteLine("Listado de todas las reservas para el cliente con ID " + _idClienteValidado + ":" + Environment.NewLine + _acumulador + Environment.NewLine);
+
+                Console.WriteLine("Presione Enter para elegir otra opción");
+
+                Console.ReadKey();
+                Console.Clear();
+            }
+        }
+
+        public static void TraerHabitacionesPorHo()
+        {
+            ListarHa();
+        }
+
+        public static void Salir()
+        {
+            Console.WriteLine("Usted ha salido del gestor del Rich Texan Hotel, presione Enter");
+            Console.ReadKey();
+
+            Environment.Exit(0);
         }
     }
 }
