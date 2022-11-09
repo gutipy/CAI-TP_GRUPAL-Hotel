@@ -41,12 +41,12 @@ namespace ProyectoHotel.PresentacionConsola
                             break;
 
                         case "3":
-                            //ListarR(); //Listar reservas del sistema
+                            ListarR(); //Listar reservas del sistema
 
                             break;
 
                         case "4":
-                            //AgregarR(); //Agrego una reserva al sistema
+                            AgregarR(); //Agrego una reserva al sistema
 
                             break;
 
@@ -486,6 +486,155 @@ namespace ProyectoHotel.PresentacionConsola
             Ho.AgregarHotel(nuevoHotel); //Invoco a la función 'AgregarHotel' de la capa de negocio y le indico que agregue el hotel con los datos que puso el usuario
 
             Console.WriteLine("El hotel fue agregado exitosamente al sistema, presione Enter para elegir otra opción.");
+
+            Console.ReadKey();
+            Console.Clear();
+        }
+
+        public static void ListarR()
+        {
+            //Declaración de variables
+            //----------------------------------------------
+            ReservaNegocio R = new ReservaNegocio();
+            List<Reserva> _listadoReservas = new List<Reserva>();
+            string _acumulador = "";
+            //----------------------------------------------
+
+            _listadoReservas = R.GetLista(); //Traigo el listado de reservas de la capa de negocio que a su vez lo trae de la capa de datos
+
+            if (_listadoReservas.Count == 0 || _listadoReservas == null) //Valido si la lista de reservas está vacía, caso afirmativo le informo al usuario y le pido que ingrese otra opción
+            {
+                Console.WriteLine("La lista de reservas está vacía, por favor ingrese otra opción.");
+
+                Console.ReadKey();
+                Console.Clear();
+            }
+            else
+            {
+                foreach (Reserva r in _listadoReservas)
+                {
+                    _acumulador +=
+                        Environment.NewLine +
+                        r.GetCredencial() +
+                        Environment.NewLine
+                        ;
+                }
+
+                Console.WriteLine("Listado de todas las reservas del sistema: " + Environment.NewLine + _acumulador + Environment.NewLine);
+
+                Console.WriteLine("Presione Enter para elegir otra opción");
+
+                Console.ReadKey();
+                Console.Clear();
+            }
+        }
+
+        public static void AgregarR()
+        {
+            //Declaración de variables
+            //---------------------------------------------------
+            ReservaNegocio R = new ReservaNegocio();
+            List<Reserva> _listadoReservas = new List<Reserva>();
+            ClienteNegocio C = new ClienteNegocio();
+            List<Cliente> _listadoClientes = new List<Cliente>();
+            bool _flag;
+            int _idReserva;
+            int _idCliente = 0;
+            string _dniCliente;
+            int _dniClienteValidado = 0;
+            string _idHabitacion;
+            int _idHabitacionValidado = 0;
+            string _cantidadHuespedes;
+            int _cantidadHuespedesValidado = 0;
+            string _fechaIngreso;
+            DateTime _fechaIngresoValidada = DateTime.Now;
+            string _fechaEgreso;
+            DateTime _fechaEgresoValidada = DateTime.Now;
+            //---------------------------------------------------
+
+            _listadoReservas = R.GetLista(); //Traigo la lista de reservas de la capa de negocio
+
+            _idReserva = _listadoReservas.Last().Id + 1; //Le asigno el código de reserva + 1 partiendo del último hotel de la lista
+
+            do
+            {
+                Console.WriteLine("Ingrese el DNI del cliente de la reserva a agregar");
+                _dniCliente = Console.ReadLine();
+
+                _flag = ValidacionesInputHelper.FuncionValidacionDni(_dniCliente, ref _dniClienteValidado, "DNI");
+
+                _listadoClientes = C.GetLista();
+
+                foreach (Cliente c in _listadoClientes)
+                {
+                    if (c.Dni == _dniClienteValidado) //Una vez que validé el DNI se busca matchear el DNI ingresado con el DNI de la lista de clientes para asi poder encontrar el ID de cliente
+                    {
+                        _idCliente = c.Id; //Asigno el ID del cliente correspondiente al DNI ingresado por el usuario a la variable _idCliente
+                    }
+                }
+
+                if (_idCliente == 0) //Si el ID de cliente sigue en su valor por defecto quiere decir que el DNI ingresado no corresponde a ningún cliente registrado, por lo cual le aviso al usuario que ingrese un DNI valido o se registre como cliente.
+                {
+                    Console.WriteLine("El DNI ingresado no corresponde a ningún cliente registrado en el Sistema, intente nuevamente.");
+                    _flag = false;
+                }
+                else
+                {
+                    _flag = true;
+                }
+
+            } while (_flag == false);
+
+            do
+            {
+                Console.WriteLine("Ingrese el ID de la habitación de la reserva a agregar");
+                _idHabitacion = Console.ReadLine();
+
+                _flag = ValidacionesInputHelper.FuncionValidacionCodigo(_idHabitacion, ref _idHabitacionValidado, "ID Habitación");
+
+            } while (_flag == false);
+
+            do
+            {
+                Console.WriteLine("Ingrese la cantidad de huéspedes de la reserva a agregar");
+                _cantidadHuespedes = Console.ReadLine();
+
+                _flag = ValidacionesInputHelper.FuncionValidacionNumeroNatural(_cantidadHuespedes, ref _cantidadHuespedesValidado, "Cantidad de huéspedes");
+
+            } while (_flag == false);
+
+            do
+            {
+                Console.WriteLine("Ingrese la fecha de ingreso de la reserva a agregar");
+                _fechaIngreso = Console.ReadLine();
+
+                _flag = ValidacionesInputHelper.FuncionValidacionFecha(_fechaIngreso, ref _fechaIngresoValidada, "Fecha de ingreso");
+
+            } while (_flag == false);
+
+            do
+            {
+                Console.WriteLine("Ingrese la fecha de egreso de la reserva a agregar");
+                _fechaEgreso = Console.ReadLine();
+
+                _flag = ValidacionesInputHelper.FuncionValidacionFecha(_fechaEgreso, ref _fechaEgresoValidada, "Fecha de egreso");
+
+            } while (_flag == false);
+
+            Reserva nuevaReserva = new Reserva //Instancio la clase 'Reserva' y le asigno todos los inputs validados que ingresó el usuario
+                (
+                _idReserva,
+                _idCliente,
+                _idHabitacionValidado,
+                _cantidadHuespedesValidado,
+                _fechaIngresoValidada,
+                _fechaEgresoValidada
+                )
+                ;
+
+            R.AgregarReserva(nuevaReserva); //Invoco a la función 'AgregarReserva' de la capa de negocio y le indico que agregue la reserva con los datos que puso el usuario
+
+            Console.WriteLine("La reserva fue agregada exitosamente al sistema, presione Enter para elegir otra opción.");
 
             Console.ReadKey();
             Console.Clear();

@@ -12,6 +12,7 @@ namespace ProyectoHotel.PresentacionConsola
         {
             Console.WriteLine(
                 "Bienvenido al programa de gestión de Rich Texan Hotel! Seleccione una opción:" + Environment.NewLine +
+
                 "1 - Listar clientes" + Environment.NewLine +
                 "2 - Agregar clientes" + Environment.NewLine +
                 "3 - Listar reservas" + Environment.NewLine +
@@ -22,7 +23,7 @@ namespace ProyectoHotel.PresentacionConsola
                 "8 - Agregar habitaciones" + Environment.NewLine +
                 "9 - Traer reservas por cliente" + Environment.NewLine +
                 "10 - Traer habitaciones por hotel" + Environment.NewLine +
-                "11 - Salir"
+                "11 - Salir" + Environment.NewLine
                 )
                 ;
         }
