@@ -34,7 +34,11 @@ Dentro de su plan de desarrollo profesional se encuentra en búsqueda de una opo
 
 ![Foto de perfil de Tomás Hardoy](https://github.com/gutipy/CAI-TP_GRUPAL-Hotel/blob/41c763809828720df8a759de7fc895f6b8939797/Imagenes/tomas_hardoy1.png)
 
-Descripción
+Nacido en Buenos Aires, Argentina. 24 años. Está cursando las últimas 4 materias de la carrera de Lic. en Sistemas.
+
+Actualmente trabaja en Accenture como analista en el area de integracion de tecnologia y negocios.
+
+Busca una carrera que le permita cubrir ese desentendimiento que suele haber entra las areas tecnologias y de negocios, siendo un nexo para entendimiento y colaboracion.
 
 ## 2. Contexto 📚
 
