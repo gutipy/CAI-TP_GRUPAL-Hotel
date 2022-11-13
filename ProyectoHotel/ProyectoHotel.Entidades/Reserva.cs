@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ProyectoHotel.Entidades
 {
-    internal class Reserva
+    public class Reserva
     {
         public Reserva(int id, int idCliente, int idHabitacion, int cantidadHuespedes, DateTime fechaIngreso, DateTime fechaEgreso)
         {

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ProyectoHotel.Entidades
 {
-    internal class Cliente
+    public class Cliente : Persona
     {
         public Cliente(int id, DateTime fechaAlta, bool activo)
         {

@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace ProyectoHotel.Entidades
 {
-    internal class Persona:Cliente
+    public class TransactionResult
     {
+        public bool IsOk { get; set; }
+        public int Id { get; set; }
+        public string Error { get; set; }
     }
 }

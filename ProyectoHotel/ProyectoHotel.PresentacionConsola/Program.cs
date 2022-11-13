@@ -27,6 +27,8 @@ namespace ProyectoHotel.PresentacionConsola
                     //Se valida que la opcion ingresada no sea vacío y/o distinta de las opciones permitidas
                     ValidacionesInputHelper.FuncionValidacionOpcion(ref _opcionMenuPrincipal);
 
+                    Console.Clear();
+
                     //Estructura condicional para controlar el flujo del programa
                     switch (_opcionMenuPrincipal)
                     {
@@ -106,14 +108,14 @@ namespace ProyectoHotel.PresentacionConsola
 
             if (_listadoClientes.Count == 0 || _listadoClientes == null) //Valido si la lista de clientes está vacía, caso afirmativo le informo al usuario y le pido que ingrese otra opción
             {
-                Console.WriteLine("La agenda está vacía, por favor ingrese otra opción.");
+                Console.WriteLine("La lista de clientes está vacía, por favor ingrese otra opción.");
 
                 Console.ReadKey();
                 Console.Clear();
             }
             else
             {
-                foreach (Cliente c in _listadoClientes)
+                foreach (Cliente c in _listadoClientes) //Recorro todos los clientes por numero de registro y los almaceno en el acumulador ya formateados con la función 'GetCredencial' para mostrar los datos más relevantes al user
                 {
                     _acumulador +=
                         Environment.NewLine +
@@ -125,6 +127,7 @@ namespace ProyectoHotel.PresentacionConsola
                 Console.WriteLine("Listado de todos los clientes de la cadena hotelera: " + Environment.NewLine + _acumulador + Environment.NewLine);
 
                 Console.WriteLine("Presione Enter para elegir otra opción");
+
                 Console.ReadKey();
                 Console.Clear();
             }
@@ -147,7 +150,6 @@ namespace ProyectoHotel.PresentacionConsola
             long _telefonoClienteValidado = 0;
             string _fechaNacimientoCliente;
             DateTime _fechaNacimientoClienteValidada = DateTime.Now;
-            string _fechaAltaCliente;
             DateTime _fechaAltaClienteValidada = DateTime.Now;
             string _mailCliente;
             //---------------------------------------------------------
@@ -155,69 +157,75 @@ namespace ProyectoHotel.PresentacionConsola
 
             _listadoClientes = C.GetLista(); //Traigo la lista de clientes de la capa de negocio
 
-            _idCliente = _listadoClientes.Last().Id + 1; //Le asigno el código de cliente + 1 partiendo del último cliente de la lista
+            if (_listadoClientes.Count == 0) //Si la lista de clientes por número de registro está vacía le indico que le cargue el ID #01 al cliente
+            {
+                _idCliente = 1;
+            }
+            else //Si la lista de clientes no está vacía le indico que asigne el código de cliente + 1 partiendo del último cliente de la lista
+            {
+                _idCliente = _listadoClientes.Last().Id + 1;
+            }
 
-            do
+            do //Pido el DNI del cliente al usuario y lo valido
             {
                 Console.WriteLine("Ingrese el número de DNI del cliente a agregar");
                 _dniCliente = Console.ReadLine();
+
                 _flag = ValidacionesInputHelper.FuncionValidacionDni(_dniCliente, ref _dniClienteValidado, "Número de documento");
 
             } while (_flag == false);
 
-            do
+            do //Pido el nombre del cliente al usuario y lo valido
             {
                 Console.WriteLine("Ingrese el nombre del cliente a agregar");
                 _nombreCliente = Console.ReadLine();
+
                 _flag = ValidacionesInputHelper.FuncionValidacionCadena(ref _nombreCliente, "Nombre");
 
             } while (_flag == false);
 
-            do
+            do //Pido el apellido del cliente al usuario y lo valido
             {
                 Console.WriteLine("Ingrese el apellido del cliente a agregar");
                 _apellidoCliente = Console.ReadLine();
+
                 _flag = ValidacionesInputHelper.FuncionValidacionCadena(ref _apellidoCliente, "Apellido");
 
             } while (_flag == false);
 
-            do
+            do //Pido la fecha de nacimiento del cliente al usuario y lo valido
             {
                 Console.WriteLine("Ingrese la fecha de nacimiento del cliente a agregar");
                 _fechaNacimientoCliente = Console.ReadLine();
-                _flag = ValidacionesInputHelper.FuncionValidacionFecha(_fechaNacimientoCliente, ref _fechaNacimientoClienteValidada, "Fecha de nacimiento");
+
+                _flag = ValidacionesInputHelper.FuncionValidacionFechaNacimiento(_fechaNacimientoCliente, ref _fechaNacimientoClienteValidada, "Fecha de nacimiento");
 
             } while (_flag == false);
 
-            do
+            do //Pido la dirección del cliente al usuario y lo valido
             {
                 Console.WriteLine("Ingrese la dirección del cliente a agregar");
                 _direccionCliente = Console.ReadLine();
+
                 _flag = ValidacionesInputHelper.FuncionValidacionCadena(ref _direccionCliente, "Dirección");
 
             } while (_flag == false);
 
-            do
+            do //Pido el teléfono del cliente al usuario y lo valido
             {
                 Console.WriteLine("Ingrese el teléfono del cliente a agregar");
                 _telefonoCliente = Console.ReadLine();
+
                 _flag = ValidacionesInputHelper.FuncionValidacionTelefono(_telefonoCliente, ref _telefonoClienteValidado, "Teléfono");
 
             } while (_flag == false);
 
-            do
+            do //Pido el email del cliente al usuario y lo valido
             {
                 Console.WriteLine("Ingrese el mail del cliente a agregar");
                 _mailCliente = Console.ReadLine();
+
                 _flag = ValidacionesInputHelper.FuncionValidacionMail(ref _mailCliente, "Mail");
-
-            } while (_flag == false);
-
-            do
-            {
-                Console.WriteLine("Ingrese la fecha de alta del cliente a agregar");
-                _fechaAltaCliente = Console.ReadLine();
-                _flag = ValidacionesInputHelper.FuncionValidacionFecha(_fechaAltaCliente, ref _fechaAltaClienteValidada, "Fecha de alta");
 
             } while (_flag == false);
 
@@ -249,6 +257,8 @@ namespace ProyectoHotel.PresentacionConsola
             //-------------------------------------------------------------
             HabitacionNegocio Ha = new HabitacionNegocio();
             List<Habitacion> _listadoHabitaciones = new List<Habitacion>();
+            HotelNegocio Ho = new HotelNegocio();
+            List<Hotel> _listadoHoteles = new List<Hotel>();
             string _idHotel;
             int _idHotelValidado = 0;
             bool _flag;
@@ -257,13 +267,27 @@ namespace ProyectoHotel.PresentacionConsola
 
             do
             {
+                _listadoHoteles = Ho.GetLista(); //Traigo la lista de hoteles de la capa de negocio
+
+                foreach (Hotel ho in _listadoHoteles) //Recorro todos los hoteles por numero de registro y los almaceno en el acumulador ya formateados con la función 'GetCredencial' para mostrar los datos más relevantes al user
+                {
+                    _acumulador +=
+                        Environment.NewLine +
+                        ho.GetCredencial() +
+                        Environment.NewLine
+                        ;
+                }
+
+                Console.WriteLine(_acumulador + Environment.NewLine);
+
                 Console.WriteLine("Ingrese el ID del hotel para listar las habitaciones:");
-                //Agregar código para mostrarle al usuario el listado de IDs de los hoteles actuales
                 _idHotel = Console.ReadLine();
 
                 _flag = ValidacionesInputHelper.FuncionValidacionCodigo(_idHotel, ref _idHotelValidado, "ID Hotel");
 
             } while (_flag == false);
+
+            Console.Clear();
 
             _listadoHabitaciones = Ha.GetLista(_idHotelValidado.ToString()); //Traigo el listado de habitaciones por hotel de la capa de negocio que a su vez lo trae de la capa de datos
 
@@ -274,9 +298,12 @@ namespace ProyectoHotel.PresentacionConsola
                 Console.ReadKey();
                 Console.Clear();
             }
+
             else
             {
-                foreach (Habitacion ha in _listadoHabitaciones)
+                _acumulador = "";
+
+                foreach (Habitacion ha in _listadoHabitaciones) //Recorro todas las habitaciones por id de hotel y las almaceno en el acumulador ya formateadas con la función 'GetCredencial' para mostrar los datos más relevantes al user
                 {
                     _acumulador +=
                         Environment.NewLine +
@@ -284,6 +311,8 @@ namespace ProyectoHotel.PresentacionConsola
                         Environment.NewLine
                         ;
                 }
+
+                Console.Clear();
 
                 Console.WriteLine("Listado de todas las habitaciones del hotel (ID: #" + _idHotelValidado + "): " + Environment.NewLine + _acumulador + Environment.NewLine);
 
@@ -299,7 +328,10 @@ namespace ProyectoHotel.PresentacionConsola
             //---------------------------------------------------------
             HabitacionNegocio Ha = new HabitacionNegocio();
             List<Habitacion> _listadoHabitaciones = new List<Habitacion>();
+            HotelNegocio Ho = new HotelNegocio();
+            List<Hotel> _listadoHoteles = new List<Hotel>();
             bool _flag;
+            string _acumulador = "";
             string _idHotel;
             int _idHotelValidado = 0;
             int _idHabitacion;
@@ -314,6 +346,19 @@ namespace ProyectoHotel.PresentacionConsola
 
             do
             {
+                _listadoHoteles = Ho.GetLista();
+
+                foreach (Hotel ho in _listadoHoteles)
+                {
+                    _acumulador +=
+                        Environment.NewLine +
+                        ho.GetCredencial() +
+                        Environment.NewLine
+                        ;
+                }
+
+                Console.WriteLine(_acumulador + Environment.NewLine);
+
                 Console.WriteLine("Ingrese el ID del hotel al cual desea agregar una habitación:");
                 //Agregar código para mostrarle al usuario el listado de IDs de los hoteles actuales
                 _idHotel = Console.ReadLine();
@@ -324,7 +369,14 @@ namespace ProyectoHotel.PresentacionConsola
 
             _listadoHabitaciones = Ha.GetLista(_idHotelValidado.ToString()); //Traigo la lista de habitaciones por hotel de la capa de negocio
 
-            _idHabitacion = _listadoHabitaciones.Last().Id + 1; //Le asigno el código de habitación + 1 partiendo de la última habitación de la lista
+            if (_listadoHabitaciones.Count == 0)
+            {
+                _idHabitacion = 1;
+            }
+            else
+            {
+                _idHabitacion = _listadoHabitaciones.Last().Id + 1; //Le asigno el código de habitación + 1 partiendo de la última habitación de la lista
+            }
 
             do
             {
@@ -347,7 +399,6 @@ namespace ProyectoHotel.PresentacionConsola
             do
             {
                 Console.WriteLine("Ingrese '1' si la habitación a agregar es cancelable y '2' si no es cancelable");
-                _opcionCancelacion = Console.ReadLine();
 
                 _flag = ValidacionesInputHelper.FuncionValidacionOpcionCancelacion(ref _opcionCancelacion, ref _esCancelable);
 
@@ -367,7 +418,7 @@ namespace ProyectoHotel.PresentacionConsola
                 _idHabitacion,
                 _idHotelValidado,
                 _opcionCategoriaHabitacion,
-                -_cantidadPlazasHabitacionValidada,
+                _cantidadPlazasHabitacionValidada,
                 _esCancelable,
                 _precioHabitacionValidado
                 )
@@ -401,7 +452,7 @@ namespace ProyectoHotel.PresentacionConsola
             }
             else
             {
-                foreach (Hotel ho in _listadoHoteles)
+                foreach (Hotel ho in _listadoHoteles) //Recorro todos los hoteles por numero de registro y los almaceno en el acumulador ya formateados con la función 'GetCredencial' para mostrar los datos más relevantes al user
                 {
                     _acumulador +=
                         Environment.NewLine +
@@ -410,7 +461,7 @@ namespace ProyectoHotel.PresentacionConsola
                         ;
                 }
 
-                Console.WriteLine("Listado de todos los hoteles del sistema: " + Environment.NewLine + _acumulador + Environment.NewLine);
+                Console.WriteLine("Listado de todos los hoteles del sistema por número de registro 888.086: " + Environment.NewLine + _acumulador + Environment.NewLine);
 
                 Console.WriteLine("Presione Enter para elegir otra opción");
 
@@ -437,36 +488,46 @@ namespace ProyectoHotel.PresentacionConsola
 
             _listadoHoteles = Ho.GetLista(); //Traigo la lista de hoteles de la capa de negocio
 
-            _idHotel = _listadoHoteles.Last().Id + 1; //Le asigno el código de hotel + 1 partiendo del último hotel de la lista
+            if (_listadoHoteles.Count == 0) //Si la lista de hoteles por número de registro está vacía le indico que le cargue el ID #01 al hotel
+            {
+                _idHotel = 1;
+            }
+            else //Si la lista de hoteles no está vacía le indico que asigne el código de hotel + 1 partiendo del último hotel de la lista
+            {
+                _idHotel = _listadoHoteles.Last().Id + 1;
+            }
 
-            do
+
+            do //Pido al usuario el nombre del hotel y lo valido
             {
                 Console.WriteLine("Ingrese el nombre del hotel a agregar");
                 _nombreHotel = Console.ReadLine();
+
                 _flag = ValidacionesInputHelper.FuncionValidacionCadena(ref _nombreHotel, "Nombre");
 
             } while (_flag == false);
 
-            do
+            do //Pido al usuario la dirección del hotel y lo valido
             {
                 Console.WriteLine("Ingrese la dirección del hotel a agregar");
                 _direccionHotel = Console.ReadLine();
+
                 _flag = ValidacionesInputHelper.FuncionValidacionCadena(ref _direccionHotel, "Dirección");
 
             } while (_flag == false);
 
-            do
+            do //Pido al usuario la cantidad de estrellas del hotel y lo valido
             {
-                Console.WriteLine("Ingrese la cantidad de estrellas (de 1⭐ a 5⭐) del hotel a agregar");
+                Console.WriteLine("Ingrese la cantidad de estrellas (de 1 a 5) del hotel a agregar");
                 _cantidadEstrellas = Console.ReadLine();
 
                 _flag = ValidacionesInputHelper.FuncionValidacionNumeroNatural(_cantidadEstrellas, ref _cantidadEstrellasValidada, "Cantidad de estrellas");
 
             } while (_flag == false);
 
-            do
+            do //Pido al usuario las amenities del hotel y lo valido
             {
-                Console.WriteLine("Ingrese '1' si el hotel a agregar posee amenities y '2' si no posee amenities");
+                Console.WriteLine("Ingrese '1' si el hotel a agregar posee amenities y '2' si no posee amenities (Recuerde que los hoteles con 2 o menos estrellas NO pueden tener amenities y los hoteles con 3 o más estrellas DEBEN tener amenities)");
                 _opcionAmenities = Console.ReadLine();
 
                 _flag = ValidacionesInputHelper.FuncionValidacionOpcionAmenities(ref _opcionAmenities, ref _tieneAmenities);
@@ -511,7 +572,7 @@ namespace ProyectoHotel.PresentacionConsola
             }
             else
             {
-                foreach (Reserva r in _listadoReservas)
+                foreach (Reserva r in _listadoReservas) //Recorro todas las reservas por numero de registro y las almaceno en el acumulador ya formateadas con la función 'GetCredencial' para mostrar los datos más relevantes al user
                 {
                     _acumulador +=
                         Environment.NewLine +
@@ -520,7 +581,7 @@ namespace ProyectoHotel.PresentacionConsola
                         ;
                 }
 
-                Console.WriteLine("Listado de todas las reservas del sistema: " + Environment.NewLine + _acumulador + Environment.NewLine);
+                Console.WriteLine("Listado de todas las reservas del sistema para el número de registro 888.086: " + Environment.NewLine + _acumulador + Environment.NewLine);
 
                 Console.WriteLine("Presione Enter para elegir otra opción");
 
@@ -537,11 +598,18 @@ namespace ProyectoHotel.PresentacionConsola
             List<Reserva> _listadoReservas = new List<Reserva>();
             ClienteNegocio C = new ClienteNegocio();
             List<Cliente> _listadoClientes = new List<Cliente>();
+            HotelNegocio Ho = new HotelNegocio();
+            List<Hotel> _listadoHoteles = new List<Hotel>();
+            HabitacionNegocio Ha = new HabitacionNegocio();
+            List<Habitacion> _listadoHabitaciones = new List<Habitacion>();
+            string _acumulador = "";
             bool _flag;
             int _idReserva;
             int _idCliente = 0;
             string _dniCliente;
             int _dniClienteValidado = 0;
+            string _idHotel;
+            int _idHotelValidado = 0;
             string _idHabitacion;
             int _idHabitacionValidado = 0;
             string _cantidadHuespedes;
@@ -554,16 +622,36 @@ namespace ProyectoHotel.PresentacionConsola
 
             _listadoReservas = R.GetLista(); //Traigo la lista de reservas de la capa de negocio
 
-            _idReserva = _listadoReservas.Last().Id + 1; //Le asigno el código de reserva + 1 partiendo del último hotel de la lista
-
-            do
+            if (_listadoReservas.Count == 0) //Si la lista de reservas por número de registro está vacía le indico que le cargue el ID #01 a la reserva
             {
+                _idReserva = 1;
+            }
+            else
+            {
+                _idReserva = _listadoReservas.Last().Id + 1; //Si la lista de reservas no está vacía le indico que asigne el código de reserva + 1 partiendo de la última reserva de la lista
+            }
+
+            do //Muestro los clientes en pantalla para que el usuario ingrese el DNI de un cliente (se valida el DNI) para la reserva a agregar
+            {
+                _listadoClientes = C.GetLista(); //Traigo la lista de clientes de la capa de negocio
+
+                foreach (Cliente c in _listadoClientes) //Recorro todos los clientes por numero de registro y los almaceno en el acumulador ya formateados con la función 'GetCredencial' para mostrar los datos más relevantes al user
+                {
+                    _acumulador +=
+                        Environment.NewLine +
+                        c.GetCredencial() +
+                        Environment.NewLine
+                        ;
+                }
+
+                Console.WriteLine(_acumulador + Environment.NewLine);
+
                 Console.WriteLine("Ingrese el DNI del cliente de la reserva a agregar");
                 _dniCliente = Console.ReadLine();
 
                 _flag = ValidacionesInputHelper.FuncionValidacionDni(_dniCliente, ref _dniClienteValidado, "DNI");
 
-                _listadoClientes = C.GetLista();
+
 
                 foreach (Cliente c in _listadoClientes)
                 {
@@ -576,6 +664,7 @@ namespace ProyectoHotel.PresentacionConsola
                 if (_idCliente == 0) //Si el ID de cliente sigue en su valor por defecto quiere decir que el DNI ingresado no corresponde a ningún cliente registrado, por lo cual le aviso al usuario que ingrese un DNI valido o se registre como cliente.
                 {
                     Console.WriteLine("El DNI ingresado no corresponde a ningún cliente registrado en el Sistema, intente nuevamente.");
+
                     _flag = false;
                 }
                 else
@@ -585,8 +674,49 @@ namespace ProyectoHotel.PresentacionConsola
 
             } while (_flag == false);
 
-            do
+            Console.Clear();
+
+            do //Muestro los hoteles en pantalla para que el usuario ingrese el ID de un hotel (se valida el ID) para la reserva a agregar
             {
+                _acumulador = "";
+                _listadoHoteles = Ho.GetLista(); //Traigo la lista de hoteles de la capa de negocio
+
+                foreach (Hotel ho in _listadoHoteles) //Recorro todos los hoteles y los almaceno en el acumulador ya formateados con la función 'GetCredencial' para mostrar los datos más relevantes al user
+                {
+                    _acumulador +=
+                        Environment.NewLine +
+                        ho.GetCredencial() +
+                        Environment.NewLine
+                        ;
+                }
+
+                Console.WriteLine(_acumulador + Environment.NewLine);
+
+                Console.WriteLine("Ingrese el ID del hotel de la reserva a agregar");
+                _idHotel = Console.ReadLine();
+
+                _flag = ValidacionesInputHelper.FuncionValidacionCodigo(_idHotel, ref _idHotelValidado, "ID Hotel");
+
+            } while (_flag == false);
+
+            Console.Clear();
+
+            do //Muestro las habitaciones del ID de hotel seleccionado en pantalla para que el usuario ingrese el ID de una habitación (se valida el ID) para la reserva a agregar
+            {
+                _acumulador = "";
+                _listadoHabitaciones = Ha.GetLista(_idHotelValidado.ToString()); //Traigo la lista de habitaciones para el ID de hotel indicado por el usuario
+
+                foreach (Habitacion ha in _listadoHabitaciones) //Recorro todas las habitaciones del hotel indicado y las almaceno en el acumulador ya formateadas con la función 'GetCredencial' para mostrar los datos más relevantes al user
+                {
+                    _acumulador +=
+                        Environment.NewLine +
+                        ha.GetCredencial() +
+                        Environment.NewLine
+                        ;
+                }
+
+                Console.WriteLine(_acumulador + Environment.NewLine);
+
                 Console.WriteLine("Ingrese el ID de la habitación de la reserva a agregar");
                 _idHabitacion = Console.ReadLine();
 
@@ -594,7 +724,7 @@ namespace ProyectoHotel.PresentacionConsola
 
             } while (_flag == false);
 
-            do
+            do //Pido la cantidad de huéspedes al usuario y lo valido
             {
                 Console.WriteLine("Ingrese la cantidad de huéspedes de la reserva a agregar");
                 _cantidadHuespedes = Console.ReadLine();
@@ -603,18 +733,20 @@ namespace ProyectoHotel.PresentacionConsola
 
             } while (_flag == false);
 
-            do
+            Console.Clear();
+
+            do //Pido la fecha de ingreso al usuario y lo valido
             {
-                Console.WriteLine("Ingrese la fecha de ingreso de la reserva a agregar");
+                Console.WriteLine("Ingrese la fecha de ingreso de la reserva a agregar (Recuerde que las reservas se realizan como máximo con 1 (un) año de anticipación)");
                 _fechaIngreso = Console.ReadLine();
 
                 _flag = ValidacionesInputHelper.FuncionValidacionFecha(_fechaIngreso, ref _fechaIngresoValidada, "Fecha de ingreso");
 
             } while (_flag == false);
 
-            do
+            do //Pido la fecha de egreso al usuario y lo valido
             {
-                Console.WriteLine("Ingrese la fecha de egreso de la reserva a agregar");
+                Console.WriteLine("Ingrese la fecha de egreso de la reserva a agregar (Recuerde que las reservas se realizan como máximo con 1 (un) año de anticipación)");
                 _fechaEgreso = Console.ReadLine();
 
                 _flag = ValidacionesInputHelper.FuncionValidacionFecha(_fechaEgreso, ref _fechaEgresoValidada, "Fecha de egreso");
@@ -632,7 +764,7 @@ namespace ProyectoHotel.PresentacionConsola
                 )
                 ;
 
-            R.AgregarReserva(nuevaReserva); //Invoco a la función 'AgregarReserva' de la capa de negocio y le indico que agregue la reserva con los datos que puso el usuario
+            R.AgregarReserva(nuevaReserva, _idHotel); //Invoco a la función 'AgregarReserva' de la capa de negocio y le indico que agregue la reserva con los datos que puso el usuario
 
             Console.WriteLine("La reserva fue agregada exitosamente al sistema, presione Enter para elegir otra opción.");
 
@@ -646,21 +778,37 @@ namespace ProyectoHotel.PresentacionConsola
             //----------------------------------------------
             ReservaNegocio R = new ReservaNegocio();
             List<Reserva> _listadoReservasPorCliente = new List<Reserva>();
+            ClienteNegocio C = new ClienteNegocio();
+            List<Cliente> _listadoClientes = new List<Cliente>();
             string _acumulador = "";
             bool _flag;
             string _idCliente;
             int _idClienteValidado = 0;
-
             //----------------------------------------------
 
-            do
+            do //Muestro los clientes en pantalla para que el usuario ingrese el ID de un cliente (se valida el ID) para la reserva a agregar
             {
+                _listadoClientes = C.GetLista(); //Traigo la lista de clientes de la capa de negocio
+
+                foreach (Cliente c in _listadoClientes) //Recorro todos los clientes por numero de registro y los almaceno en el acumulador ya formateados con la función 'GetCredencial' para mostrar los datos más relevantes al user
+                {
+                    _acumulador +=
+                        Environment.NewLine +
+                        c.GetCredencial() +
+                        Environment.NewLine
+                        ;
+                }
+
+                Console.WriteLine(_acumulador + Environment.NewLine);
+
                 Console.WriteLine("Ingrese el ID del cliente del cuál desea traer las reservas");
                 _idCliente = Console.ReadLine();
 
                 _flag = ValidacionesInputHelper.FuncionValidacionCodigo(_idCliente, ref _idClienteValidado, "ID Cliente");
 
             } while (_flag == false);
+
+            Console.Clear();
 
             _listadoReservasPorCliente = R.GetListaPorCliente(_idClienteValidado); //Traigo el listado de reservas por cliente de la capa de negocio que a su vez lo trae de la capa de datos
 
@@ -671,9 +819,12 @@ namespace ProyectoHotel.PresentacionConsola
                 Console.ReadKey();
                 Console.Clear();
             }
+
             else
             {
-                foreach (Reserva r in _listadoReservasPorCliente)
+                _acumulador = "";
+
+                foreach (Reserva r in _listadoReservasPorCliente) //Recorro todas las reservas por ID de cliente y las almaceno en el acumulador ya formateadas con la función 'GetCredencial' para mostrar los datos más relevantes al user
                 {
                     _acumulador +=
                         Environment.NewLine +

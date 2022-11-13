@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ProyectoHotel.Entidades
 {
-    internal class Habitacion
+    public class Habitacion
     {
         public Habitacion(int id, int idHotel, string categoria, int cantidadPlazas, bool cancelacion, double precio)
         {
