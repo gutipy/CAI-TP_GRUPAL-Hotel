@@ -25,17 +25,17 @@ namespace ProyectoHotel.Entidades
         private DateTime _fechaIngreso;
         private DateTime _fechaEgreso;
 
-        public int Id { get { return _id; } }
+        public int Id { get { return _id; } set { value = _id; } }
 
-        public int IdCliente { get { return _idCliente; } }
+        public int IdCliente { get { return _idCliente; } set { value = _idCliente; } }
 
-        public int IdHabitacion { get { return _idHabitacion; } }
+        public int IdHabitacion { get { return _idHabitacion; } set { value = _idHabitacion; } }
 
-        public int CantidadHuespedes { get { return _cantidadHuespedes; } }
+        public int CantidadHuespedes { get { return _cantidadHuespedes; } set { value = _cantidadHuespedes; } }
 
-        public DateTime FechaIngreso { get { return _fechaIngreso; } }
+        public DateTime FechaIngreso { get { return _fechaIngreso; } set { value = _fechaIngreso; } }
 
-        public DateTime FechaEgreso { get { return _fechaEgreso; } }
+        public DateTime FechaEgreso { get { return _fechaEgreso; } set { value = _fechaEgreso; } }
 
         public override string ToString()
         {

@@ -23,15 +23,15 @@ namespace ProyectoHotel.Entidades
         private int _estrellas;
         private bool _amenities;
 
-        public int Id { get { return _id; } }
+        public int Id { get { return _id; } set { value = _id; } }
 
-        public string Nombre { get { return _nombre; } }
+        public string Nombre { get { return _nombre; } set { value = _nombre; } }
 
-        public string Direccion { get { return _direccion; } }
+        public string Direccion { get { return _direccion; } set { value = _direccion; } }
 
-        public int Estrellas { get { return _estrellas; } }
+        public int Estrellas { get { return _estrellas; } set { value = _estrellas; } }
 
-        public bool Amenities { get { return _amenities; } }
+        public bool Amenities { get { return _amenities; } set { value = _amenities; } }
 
         public override string ToString()
         {

@@ -25,17 +25,17 @@ namespace ProyectoHotel.Entidades
         private bool _cancelacion;
         private double _precio;
     
-        public int Id { get { return _id; } }
+        public int Id { get { return _id; } set { value = _id; } }
 
-        public int IdHotel { get { return _idHotel; } }
+        public int IdHotel { get { return _idHotel; } set { value = _idHotel; } }
 
-        public string Categoria { get { return _categoria; } }
+        public string Categoria { get { return _categoria; } set { value = _categoria; } }
 
-        public int CantidadPlazas { get { return _cantidadPlazas; } }
+        public int CantidadPlazas { get { return _cantidadPlazas; } set { value = _cantidadPlazas; } }
 
-        public bool Cancelacion { get { return _cancelacion; } }
+        public bool Cancelacion { get { return _cancelacion; } set { value = _cancelacion; } }
 
-        public double Precio { get { return _precio; } }
+        public double Precio { get { return _precio; } set { value = _precio; } }
 
         public override string ToString()
         {
