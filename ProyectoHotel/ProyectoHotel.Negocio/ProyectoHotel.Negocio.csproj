@@ -43,7 +43,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="PersonaNegocio.cs" />
+    <Compile Include="Excepciones\ClienteExistenteException.cs" />
+    <Compile Include="Excepciones\HabitacionInvalidaException.cs" />
+    <Compile Include="Excepciones\HabitacionReservadaException.cs" />
+    <Compile Include="Excepciones\HabitacionSinEspacioException.cs" />
+    <Compile Include="Excepciones\ObjetoExistenteException.cs" />
+    <Compile Include="ClienteNegocio.cs" />
+    <Compile Include="Excepciones\ObjetoInvalidoException.cs" />
     <Compile Include="ReservaNegocio.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -60,5 +66,6 @@
       <Name>ProyectoHotel.Entidades</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

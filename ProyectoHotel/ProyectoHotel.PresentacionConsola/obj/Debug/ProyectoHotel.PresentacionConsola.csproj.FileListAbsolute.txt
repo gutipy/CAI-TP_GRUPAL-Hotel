@@ -1,0 +1,3 @@
+D:\Documents\GitHub\CAI-TP_GRUPAL-Hotel\ProyectoHotel\ProyectoHotel.PresentacionConsola\obj\Debug\ProyectoHotel.PresentacionConsola.csproj.AssemblyReference.cache
+D:\Documents\GitHub\CAI-TP_GRUPAL-Hotel\ProyectoHotel\ProyectoHotel.PresentacionConsola\obj\Debug\ProyectoHotel.PresentacionConsola.csproj.SuggestedBindingRedirects.cache
+D:\Documents\GitHub\CAI-TP_GRUPAL-Hotel\ProyectoHotel\ProyectoHotel.PresentacionConsola\obj\Debug\ProyectoHotel.PresentacionConsola.csproj.CoreCompileInputs.cache
