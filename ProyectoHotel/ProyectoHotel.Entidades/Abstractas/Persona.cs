@@ -8,9 +8,8 @@ namespace ProyectoHotel.Entidades
 {
     public abstract class Persona
     {
-        public Persona(int Id, string Nombre, string Apellido, string Direccion, long Telefono, string Mail)
+        public Persona(string Nombre, string Apellido, string Direccion, long Telefono, string Mail)
         {
-            _id = Id;
             _nombre = Nombre;
             _apellido = Apellido;
             _direccion = Direccion;
