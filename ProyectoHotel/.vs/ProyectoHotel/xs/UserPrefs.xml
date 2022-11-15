@@ -1,0 +1,27 @@
+﻿<Properties StartupConfiguration="{18EC7439-6E6A-40D3-A2D5-FE00BAE2AC0A}|Default">
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.ItemProperties.ProyectoHotel.PresentacionConsola PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="ProyectoHotel.Entidades/Cliente.cs">
+    <Files>
+      <File FileName="ProyectoHotel.Entidades/Habitacion.cs" Line="1" Column="1" />
+      <File FileName="ProyectoHotel.Entidades/Cliente.cs" Line="1" Column="1" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="ProyectoHotel" expanded="True">
+            <Node name="ProyectoHotel.Entidades" expanded="True">
+              <Node name="Abstractas" expanded="True" />
+              <Node name="Cliente.cs" selected="True" />
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+</Properties>

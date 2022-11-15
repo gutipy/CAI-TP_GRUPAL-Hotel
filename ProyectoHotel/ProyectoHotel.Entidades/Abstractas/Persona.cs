@@ -23,13 +23,13 @@ namespace ProyectoHotel.Entidades
         }
 
         //Atributos
-        private int _dni;
-        private string _nombre;
-        private string _apellido;
-        private string _direccion;
-        private long _telefono;
-        private string _mail;
-        private DateTime _fechaNacimiento;
+        protected int _dni;
+        protected string _nombre;
+        protected string _apellido;
+        protected string _direccion;
+        protected long _telefono;
+        protected string _mail;
+        protected DateTime _fechaNacimiento;
 
         //Propiedades
 
