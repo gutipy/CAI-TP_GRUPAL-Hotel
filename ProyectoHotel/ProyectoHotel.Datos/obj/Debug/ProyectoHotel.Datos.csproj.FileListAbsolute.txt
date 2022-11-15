@@ -1,2 +1,11 @@
 D:\Documents\GitHub\CAI-TP_GRUPAL-Hotel\ProyectoHotel\ProyectoHotel.Datos\obj\Debug\ProyectoHotel.Datos.csproj.AssemblyReference.cache
 D:\Documents\GitHub\CAI-TP_GRUPAL-Hotel\ProyectoHotel\ProyectoHotel.Datos\obj\Debug\ProyectoHotel.Datos.csproj.CoreCompileInputs.cache
+D:\Documents\GitHub\CAI-TP_GRUPAL-Hotel\ProyectoHotel\ProyectoHotel.Datos\bin\Debug\ProyectoHotel.Datos.dll
+D:\Documents\GitHub\CAI-TP_GRUPAL-Hotel\ProyectoHotel\ProyectoHotel.Datos\bin\Debug\ProyectoHotel.Datos.pdb
+D:\Documents\GitHub\CAI-TP_GRUPAL-Hotel\ProyectoHotel\ProyectoHotel.Datos\bin\Debug\Newtonsoft.Json.dll
+D:\Documents\GitHub\CAI-TP_GRUPAL-Hotel\ProyectoHotel\ProyectoHotel.Datos\bin\Debug\ProyectoHotel.Entidades.dll
+D:\Documents\GitHub\CAI-TP_GRUPAL-Hotel\ProyectoHotel\ProyectoHotel.Datos\bin\Debug\ProyectoHotel.Entidades.pdb
+D:\Documents\GitHub\CAI-TP_GRUPAL-Hotel\ProyectoHotel\ProyectoHotel.Datos\bin\Debug\Newtonsoft.Json.xml
+D:\Documents\GitHub\CAI-TP_GRUPAL-Hotel\ProyectoHotel\ProyectoHotel.Datos\obj\Debug\ProyectoHotel.Datos.csproj.CopyComplete
+D:\Documents\GitHub\CAI-TP_GRUPAL-Hotel\ProyectoHotel\ProyectoHotel.Datos\obj\Debug\ProyectoHotel.Datos.dll
+D:\Documents\GitHub\CAI-TP_GRUPAL-Hotel\ProyectoHotel\ProyectoHotel.Datos\obj\Debug\ProyectoHotel.Datos.pdb
